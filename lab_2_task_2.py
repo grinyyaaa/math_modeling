@@ -1,13 +1,15 @@
-a = int(input('Введите первый член прогрессии: '))
-print(a)
-b = int(input('Введите знаминатель прогрессии: '))
-print(b)
-c = range(0, int(input('Введите количество членов прогрессии: ')), 1)
-print(c)
-for i in c:
-    while i != c:
-     print(a**b, end=' ')
-     i = (a**b)*i
+a = int(input('Введите первый член: '))
+b = int(input('Введите знаменатель: '))
+stop = int(input('Введите количество: '))
+
+for n in range(0, stop, 1):
+    print(a*b**(n-1))
+
+
+
+    
+    
+
 
     
 
