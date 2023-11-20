@@ -1,7 +1,9 @@
 import numpy as np
 
-a = [1, 3, 9, 12]
-nxm = np.array(a)
+nxm = np.array([1, 3, 9, 12])
 
-for i in nxm:
-    print(i = np.sin())
+first = np.array([nxm, nxm * 2])
+print(first)
+
+slice = nxm[1,0:2:1]
+print(slice)
