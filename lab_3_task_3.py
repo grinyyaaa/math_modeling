@@ -13,13 +13,13 @@ print(t)
 x = x0 + v0x * t 
 y = y0 + v0y * t - maa * t ** 2 / 2
 
-i = np.arange(len(x))
+# i = np.arange(len(x))
 
 mass = np.zeros((len(x), 3))
-
-mass[i,0] = t[i]
-mass[i,1] = x[i]
-mass[i,2] = y[i]
+for i in np.arange(len(x)):
+    mass[i,0] = t[i]
+    mass[i,1] = x[i]
+    mass[i,2] = y[i]
 print(mass)
 
 
