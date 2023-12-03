@@ -1,0 +1,9 @@
+import numpy as np 
+n = 2
+m = 4
+mxn = np.zeros((m, n))
+for i in np.arange(0, n):
+    for j in np.arange(0, m):
+        a = np.sin(n * j + m * i + 1)
+        mxn[i, j]= a
+print(mxn)
