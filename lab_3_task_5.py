@@ -1,7 +1,7 @@
 import numpy as np
 
-N = 5
-M = 4
+N = 3
+M = 5
 
 
 a = np.zeros((N, M))
@@ -13,6 +13,8 @@ for i in np.arange(0, N, 1):
             a[i,j] = 0
         else:
             a[i,j] = arg
-        
-
+        slice = a[i,::-1]
+    print(slice)
+print()
 print(a)
+        
