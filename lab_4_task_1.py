@@ -1,9 +1,12 @@
 import numpy as np
-list = [2, 4, 8, 9]
-a = np.array(list)
-print(a)
 
-def my_average()
+L = [1, 4, 6, 3, 2]
+list = np.array(L)
 
+def avg(n):
+    m = np.average(n)
+    print(m)
+
+avg(list)
             
 
