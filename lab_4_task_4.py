@@ -1,8 +1,8 @@
 import numpy as np
+a = -4
+b = 3
 
 def lightfunc():
-    a = int(input('введите старт промежутка: '))
-    b = int(input('введите стоп промежутка: '))
     x = np.arange(a, b, 1)
     y = x**2 + 2 
     return y
