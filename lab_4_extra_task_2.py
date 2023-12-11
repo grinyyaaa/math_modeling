@@ -1,9 +1,11 @@
 import numpy as np
 def fib(n):
     a = 1
-    b = 1
-    for i in np.arange(0, n, 1):
-        a = a + b
-        print(a)
+    b = 0
+    for fibonacci in range(0, n, 1):
+        c = a + b
+        a = b
+        b = c
+        print(c)
 
-fib(4)
+fib(8)
