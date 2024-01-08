@@ -1,6 +1,5 @@
 fl = ['Роза', 'Ландыш', 'Сирень', 'Фиалка', 'Пион']
-col = ['Красный', 'Белый', 'Сиреневый', 'Оранжевый', 'Зеленый']
-truth_color = [True, True, True, False, False]
+col = ['Красный', 'Белый', 'Сиреневый', 'Голубой', 'Розовый']
 
-list_of_flowers = list(zip(fl, col, truth_color))
+list_of_flowers = list(zip(fl, col))
 print(list_of_flowers)
