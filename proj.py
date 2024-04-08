@@ -23,6 +23,15 @@ def fall(t, vx0, vy0, angle):
                     if y < -10:
                         y = (-100 - vy0*np.sin(angle) * t + ((10 * t**2)/2))
                         x = vx0*np.cos(angle) * t
+                        if y > 10:
+                            y = (120 + vy0*np.sin(angle) * t - ((10 * t**2)/2))
+                            x = vx0*np.cos(angle) * t
+                            if y < -10:
+                                y = (-140 - vy0*np.sin(angle) * t + ((10 * t**2)/2))
+                                x = vx0*np.cos(angle) * t
+                                if y > 10:
+                                    y = (160 + vy0*np.sin(angle) * t - ((10 * t**2)/2))
+                                    x = vx0*np.cos(angle) * t
 
 
     return x, y
