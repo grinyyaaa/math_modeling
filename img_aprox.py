@@ -109,6 +109,8 @@ y = 550 + 300*np.sin(t)
 
 ax.plot(x, y, '-', lw=2, color='b')
 
+
+
 plt.ylim(1000, 0)
 plt.xlim(850, 1500)
 plt.savefig('star.png')
