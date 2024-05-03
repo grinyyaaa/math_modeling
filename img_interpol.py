@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy import interpolate
+import shapely.geometry as geom
 
 img = plt.imread('horsehead.jpg')
 
@@ -9,7 +10,7 @@ fig, ax = plt.subplots()
 ax.imshow(img)
 
 t1 = np.linspace(np.pi,3*np.pi/2, 10)
-x1 = 975 + 120 * np.cos(t1)
+x1 = 970 + 120 * np.cos(t1)
 y1 = 810 + 80 * np.sin(t1)
 
 t2 = np.linspace(np.pi, 2*np.pi, 10)
@@ -68,10 +69,69 @@ y9 = 290
 x = np.append(x, x9)
 y = np.append(y, y9)
 
+t10 = np.linspace(np.pi, np.pi/1.9, 10)
+x10 = 1371 + 170 * np.cos(t10)
+y10 = 290 + 45 * np.sin(t10)
+
+x = np.append(x, x10)
+y = np.append(y, y10)
+
+t11 = np.linspace(-np.pi/2, -0.8, 10)
+x11 = 1367 + 95 * np.cos(t11)
+y11 = 889 + 550 * np.sin(t11)
+
+x = np.append(x, x11)
+y = np.append(y, y11)
+
+t12 = np.linspace(0, np.pi/2.5, 10)
+x12 = 1340 + 95 * np.cos(t12)
+y12 = 535 + 185 * np.sin(t12)
+
+x = np.append(x, x12)
+y = np.append(y, y12)
+
+t13 = np.linspace(0, np.pi/2.5, 10)
+x13 = 1320 
+y13 = 850
+
+x = np.append(x, x13)
+y = np.append(y, y13)
+
+t14 = np.linspace(0, np.pi/2.5, 10)
+x14 = 1335 
+y14 = 1000
+
+x = np.append(x, x14)
+y = np.append(y, y14)
+
+t15 = np.linspace(0, np.pi/2.5, 10)
+x15 = 800 
+y15 = 1000
+
+x = np.append(x, x15)
+y = np.append(y, y15)
+
+
 spline_coords, figure_spline_part = interpolate.splprep([x, y], s=0)
 spline_curve = interpolate.splev(figure_spline_part, spline_coords)
 
-plt.plot(spline_curve[0], spline_curve[1], 'g')
+curve_coords = []
+for i in range(len(spline_curve[0])):
+    curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
+    
+polygon = geom.Polygon(curve_coords)
+points_number_per_side = 500
+
+x_pictures_limits = [800, 1500]
+y_pictures_limits = [0, 1000]
+
+for x_point_coord in np.linspace(*x_pictures_limits, points_number_per_side):
+    for y_point_coord in np.linspace(*y_pictures_limits, points_number_per_side):
+        p = geom.Point(x_point_coord, y_point_coord)
+        if p.within(polygon):
+            plt.plot(x_point_coord, y_point_coord, 'bo', ms = 0.5)
+
+plt.plot(spline_curve[0], spline_curve[1], 'y')
 plt.ylim(1000, 0)
 plt.xlim(850, 1500)
 plt.savefig('hh_interpol.png')
