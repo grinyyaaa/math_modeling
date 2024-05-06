@@ -27,7 +27,7 @@ for x_point_coord in np.linspace(*x_pictures_limits, points_number_per_side):
     for y_point_coord in np.linspace(*y_pictures_limits, points_number_per_side):
         p = geom.Point(x_point_coord, y_point_coord)
         if p.within(polygon):
-            plt.plot(x_point_coord, y_point_coord, 'ko', ms = 0.5)
+            plt.plot(x_point_coord, y_point_coord, 'bo', ms = 0.5)
 
 plt.axis('equal')
 plt.plot(spline_curve[0], spline_curve[1], 'r')
