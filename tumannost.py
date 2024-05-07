@@ -85,7 +85,7 @@ for i in range(len(spline_curve[0])):
     curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
     
 polygon = geom.Polygon(curve_coords)
-points_number_per_side = 200
+points_number_per_side = 400
 
 x_pictures_limits = [200, 600]
 y_pictures_limits = [0, 700]
