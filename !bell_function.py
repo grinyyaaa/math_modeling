@@ -42,4 +42,12 @@ ax.set_ylabel('Coord y, m')
 cbar = fig.colorbar(sc_plot)
 cbar.set_label('Intensity of scalar')
 
+fig, ax = plt.subplots()
+sc_plot = ax.scatter(x_p, y_p, c=scalar_fields)
+ax.set_ylabel('Координата Х, м')
+ax.set_xlabel('Координата Y, м')
+
+cbar = fig.colorbar(sc_plot)
+cbar.set_label("Комбинированное скалярное поле")
+
 plt.savefig('dich1.png')
