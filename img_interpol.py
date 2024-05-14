@@ -126,7 +126,7 @@ for i in range(len(spline_curve[0])):
     curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
     
 polygon = geom.Polygon(curve_coords)
-points_number_per_side = 100
+points_number_per_side = 10
 x_pictures_limits = [800, 1500]
 y_pictures_limits = [0, 1000]
 
@@ -153,7 +153,7 @@ intensity_values = [112, 112, 112, 112, 112, 350, 355, 370, 1000, 1000, 950, 120
 def scalar_function(x, y, int_cen_x, int_cen_y, int_vel):
     scalar_field = 0
     for i in range(0, len(int_cen_x)):
-        scalar_field += int_vel[i] * bell_function(x-int_cen_x[i], y-int_cen_y[i], 30, [0.00025, 0.00025])
+        scalar_field += int_vel[i] * bell_function(x-int_cen_x[i], y-int_cen_y[i], 0.005, [0.00025, 0.00025])
     return scalar_field
 
 scalar_fields = []
