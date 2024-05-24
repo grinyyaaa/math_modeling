@@ -174,17 +174,66 @@ ax.set_xlabel('Координата X, м')
 cbar = fig.colorbar(sc_plot)
 cbar.set_label("Комбинированное скалярное поле")       
 
-x,y = np.meshgrid(np.linspace(300, 500, 5), np.linspace(700,900,5))
-
-u = 100 *(-y/np.sqrt(x**2 + y**2) + y)
-v = 100 *(x/np.sqrt(x**2 + y**2))
-
-
+x,y = np.meshgrid(np.linspace(370, 420, 3), np.linspace(780,830,3))
+u = -2
+v = 2
 plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(350, 400, 3), np.linspace(710,750,2))
+u = 0.2
+v = 1
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(300, 450, 4), np.linspace(850,870,2))
+u = 2
+v = 1
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(460, 520, 3), np.linspace(720,800,3))
+u = -2
+v = 0
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(250, 330, 3), np.linspace(900,930,3))
+u = -y/np.sqrt(x**2 + y**2) + y
+v = x/np.sqrt(x**2 + y**2)
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(330, 520, 5), np.linspace(380,450,3))
+u = -1
+v = 1
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(330, 620, 7), np.linspace(310,350,2))
+u = 0
+v = 1
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(330, 620, 7), np.linspace(230,260,2))
+u = -1
+v = 0
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(330, 500, 5), np.linspace(179,210,2))
+u = -1
+v = 0.25
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(570, 630, 4), np.linspace(450,510,3))
+u = -1
+v = 1
+plt.quiver(x,y,u,v)
+
+x,y = np.meshgrid(np.linspace(180,250, 3), np.linspace(450,510,3))
+u = -1
+v = -1
+plt.quiver(x,y,u,v)
+
 
 
 plt.title('9')
 plt.ylim(1200, 0)
 plt.xlim(0, 800)
 plt.savefig('NGC_2264.png')
+
 
