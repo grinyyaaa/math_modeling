@@ -118,6 +118,16 @@ y16 = 900 + 350*np.sin(t16)
 x = np.append(x, x16)
 y = np.append(y, y16)
 
+ti = np.linspace(0, 2*np.pi, 10)
+xi = 610 + 50 * np.cos(ti)
+yi = 560 + 50 * np.sin(ti)
+
+tj = np.linspace(0, 2*np.pi, 10)
+xj = 180 + 75 * np.cos(tj)
+yj = 620 + 50 * np.sin(tj)
+
+
+
 spline_coords, figure_spline_part = interpolate.splprep([x, y], s=0)
 spline_curve = interpolate.splev(figure_spline_part, spline_coords)
 
@@ -128,6 +138,26 @@ for i in range(len(spline_curve[0])):
 polygon = geom.Polygon(curve_coords)
 points_number_per_side = 50
 
+spline_coords, figure_spline_part = interpolate.splprep([xi, yi], s=0)
+spline_curve = interpolate.splev(figure_spline_part, spline_coords)
+
+curve_coords = []
+for i in range(len(spline_curve[0])):
+    curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
+    
+polygoni = geom.Polygon(curve_coords)
+points_number_per_side = 50
+
+spline_coords, figure_spline_part = interpolate.splprep([xj, yj], s=0)
+spline_curve = interpolate.splev(figure_spline_part, spline_coords)
+
+curve_coords = []
+for i in range(len(spline_curve[0])):
+    curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
+    
+polygonj = geom.Polygon(curve_coords)
+points_number_per_side = 100
+
 x_pictures_limits = [0, 800]
 y_pictures_limits = [0, 1200]
 
@@ -136,6 +166,10 @@ points_coords = []
 for x_point_coord in np.linspace(*x_pictures_limits, points_number_per_side):
     for y_point_coord in np.linspace(*y_pictures_limits, points_number_per_side):
         p = geom.Point(x_point_coord, y_point_coord)
+        if p.within(polygonj):
+            continue
+        if p.within(polygoni):
+            continue
         if p.within(polygon):
             plt.plot(x_point_coord, y_point_coord, 'bo', ms = 0.5)
             points_coords.append(x_point_coord)
@@ -165,12 +199,11 @@ for i in range(0, len(x_p)):
 
 fig, ax = plt.subplots()
 
-ax.imshow(img)
 sc_plot = ax.scatter(x_p, y_p, c=scalar_fields)
-plt.plot(spline_curve[0], spline_curve[1], 'y')
 ax.set_ylabel('Координата Y, м')
 ax.set_xlabel('Координата X, м')
 
+# ax.imshow(img)
 cbar = fig.colorbar(sc_plot)
 cbar.set_label("Комбинированное скалярное поле")       
 
