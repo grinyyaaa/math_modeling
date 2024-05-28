@@ -7,7 +7,7 @@ img = plt.imread('NGC_2264.jpg')
 
 fig, ax = plt.subplots()
 
-ax.imshow(img)
+# ax.imshow(img)
 
 t1 = np.linspace(np.pi, 3*np.pi/2, 10)
 x1 = 400 + 50 * np.cos(t1)
@@ -136,7 +136,7 @@ for i in range(len(spline_curve[0])):
     curve_coords.append([spline_curve[0][i], spline_curve[1][i]])
     
 polygon = geom.Polygon(curve_coords)
-points_number_per_side = 50
+points_number_per_side = 70
 
 spline_coords, figure_spline_part = interpolate.splprep([xi, yi], s=0)
 spline_curve = interpolate.splev(figure_spline_part, spline_coords)
@@ -171,7 +171,7 @@ for x_point_coord in np.linspace(*x_pictures_limits, points_number_per_side):
         if p.within(polygoni):
             continue
         if p.within(polygon):
-            plt.plot(x_point_coord, y_point_coord, 'bo', ms = 0.5)
+            # plt.plot(x_point_coord, y_point_coord, 'ro', ms = 0.5)
             points_coords.append(x_point_coord)
             points_coords.append(y_point_coord)
 
@@ -197,13 +197,11 @@ for i in range(0, len(x_p)):
     calculate = scalar_function(x_p[i], y_p[i], intensity_centerums_x, intensity_centerums_y, intensity_values)
     scalar_fields.append(calculate)
 
-fig, ax = plt.subplots()
 
 sc_plot = ax.scatter(x_p, y_p, c=scalar_fields)
 ax.set_ylabel('Координата Y, м')
 ax.set_xlabel('Координата X, м')
 
-# ax.imshow(img)
 cbar = fig.colorbar(sc_plot)
 cbar.set_label("Комбинированное скалярное поле")       
 
@@ -263,8 +261,9 @@ v = -1
 plt.quiver(x,y,u,v)
 
 
-
+# plt.plot(spline_curve[0], spline_curve[1], 'y')
 plt.title('9')
+plt.axis('equal')
 plt.ylim(1200, 0)
 plt.xlim(0, 800)
 plt.savefig('NGC_2264.png')
